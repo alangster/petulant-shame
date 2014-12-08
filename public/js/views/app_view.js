@@ -9,15 +9,11 @@ $(function() {
 		
 		initialize: function() {
 			this.collection = new Photos();
-			this.render();
 			this.$list = this.$('#photos');
 
 			this.listenTo(this.collection, 'reset', this.add)
 			this.listenTo(this.collection, 'add', this.addPhoto);
 			this.collection.fetch({reset: true});
-		},
-
-		render: function() {
 		},
 
 		addPhoto: function(photo) {
