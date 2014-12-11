@@ -23,6 +23,12 @@
 </head>
 <body>
   <meta name="viewport" content="initial-scale=1">
+  <script>
+    _.templateSettings = {
+    interpolate: /\{\{\=(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g
+    };
+  </script>
   <%= yield %>
 </body>
 </html>

@@ -1,0 +1,6 @@
+
+ShoppingCartView = Backbone.View.extend({
+
+	
+	
+});
