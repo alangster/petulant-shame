@@ -14,8 +14,8 @@ class Client
 		end
 
 		res = JSON.parse(response.body)
-		std_img_with_ids = res['data'].map {|d| { 'url' => d['images']['standard_resolution']['url'], 'id' =>  d['id']}}
-		std_img_with_ids.to_json
+		std_img_with_ids = res['data'].map {|d| { :url => d['images']['standard_resolution']['url'], :insta_id =>  d['id'], :price => sprintf('%.2f', rand(39.99..100.00)).to_f}}
+		std_img_with_ids
 	end
 
 end

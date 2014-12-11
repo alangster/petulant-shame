@@ -13,3 +13,10 @@
 	</div>
 </div>
 
+<script>
+	var app = app || {};
+	app.photos = new Photos();
+	app.appView = new AppView({collection: app.photos});
+	app.photos.reset(<%= @photos.to_json %>)
+</script>
+
