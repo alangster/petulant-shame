@@ -9,9 +9,8 @@ AppView = Backbone.View.extend({
 	initialize: function() {
 		this.$list = this.$('#photos');
 
-		this.listenTo(this.collection, 'reset', this.add)
+		this.listenTo(this.collection, 'reset', this.add);
 		this.listenTo(this.collection, 'add', this.addPhoto);
-		// this.collection.fetch({reset: true});
 	},
 
 	addPhoto: function(photo) {
@@ -26,6 +25,11 @@ AppView = Backbone.View.extend({
 	morePhotos: function() {
 		var lastPhoto = this.collection.models[(this.collection.models.length - 1)];
 		var lastPhotoId = lastPhoto.get('insta_id');
-		this.collection.fetch({data: {insta_id: lastPhotoId}});
+		console.log(lastPhotoId);
+		var self = this;
+		$.get('/photos/' + lastPhotoId)
+			.done(function(response) {
+				self.collection.add(JSON.parse(response));
+			});
 	}
 });
