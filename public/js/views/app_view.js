@@ -1,34 +1,31 @@
-var app = app || {};
-$(function() {
-	app.AppView = Backbone.View.extend({
-		el: 'body',
 
-		events: {
-			'click #more': 'morePhotos'
-		},
-		
-		initialize: function() {
-			this.collection = new Photos();
-			this.$list = this.$('#photos');
+AppView = Backbone.View.extend({
+	el: 'body',
 
-			this.listenTo(this.collection, 'reset', this.add)
-			this.listenTo(this.collection, 'add', this.addPhoto);
-			this.collection.fetch({reset: true});
-		},
+	events: {
+		'click #more': 'morePhotos'
+	},
+	
+	initialize: function() {
+		this.$list = this.$('#photos');
 
-		addPhoto: function(photo) {
-			var view = new app.ThumbView({model: photo});
-			this.$list.append(view.render().el);
-		},
+		this.listenTo(this.collection, 'reset', this.add)
+		this.listenTo(this.collection, 'add', this.addPhoto);
+		// this.collection.fetch({reset: true});
+	},
 
-		add: function() {
-			this.collection.each(this.addPhoto, this);
-		},
+	addPhoto: function(photo) {
+		var view = new ThumbView({model: photo});
+		this.$list.append(view.render().el);
+	},
 
-		morePhotos: function() {
-			var lastPhoto = this.collection.models[(this.collection.models.length - 1)];
-			var lastPhotoId = lastPhoto.get('id');
-			this.collection.fetch({data: {id: lastPhotoId}});
-		}
-	});
+	add: function() {
+		this.collection.each(this.addPhoto, this);
+	},
+
+	morePhotos: function() {
+		var lastPhoto = this.collection.models[(this.collection.models.length - 1)];
+		var lastPhotoId = lastPhoto.get('insta_id');
+		this.collection.fetch({data: {insta_id: lastPhotoId}});
+	}
 });
