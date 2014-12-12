@@ -25,7 +25,6 @@ AppView = Backbone.View.extend({
 	morePhotos: function() {
 		var lastPhoto = this.collection.models[(this.collection.models.length - 1)];
 		var lastPhotoId = lastPhoto.get('insta_id');
-		console.log(lastPhotoId);
 		var self = this;
 		$.get('/photos/' + lastPhotoId)
 			.done(function(response) {

@@ -6,22 +6,24 @@ ThumbView = Backbone.View.extend({
 		'click img': 'magnify'
 	},
 
-	template: _.template("<div class='thumb'><img src='<%= url %>'/></div>"),
-	
-	magnifiedTemplate: _.template("<div id='big'><img src='<%= url %>'/></div>"),
-
 	initialize: function() {
 		this.$frame = app.appView.$('#photo');
 		this.magnifyFirst();
 	},
 	
 	render: function() {
-		this.$el.html(this.template(this.model.toJSON()));
+		var source = $('#thumbnail-template').html();
+		var template = Handlebars.compile(source);
+		var html = template(this.model.toJSON());
+    this.$el.html(html);
 		return this;
 	},
 
 	magnify: function() {
-		this.$frame.html(this.magnifiedTemplate(this.model.toJSON()));
+		var source = $('#big-photo-template').html();
+		var template = Handlebars.compile(source);
+		var html = template(this.model.toJSON());
+		this.$frame.html(html);
 	},
 
 	magnifyFirst: function() {
