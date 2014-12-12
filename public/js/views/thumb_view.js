@@ -27,6 +27,8 @@ ThumbView = Backbone.View.extend({
 	},
 
 	magnifyFirst: function() {
-		if (this.model === app.appView.collection.models[0]) {this.magnify();}
+		if (this.model === app.appView.collection.models[0]) {
+			this.magnify();
+		}
 	}
 });
