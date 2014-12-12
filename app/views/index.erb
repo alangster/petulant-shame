@@ -10,6 +10,7 @@
 	</div>
 	<div class="col-1-2">
 		<ul id="photos"></ul>	
+		<div id="cart"></div>
 	</div>
 </div>
 
@@ -21,12 +22,16 @@
 	<div id='big'><img src='{{ url }}'/></div>
 </script>
 
+<script type="text/template" id="cart-template">
+	<h3>Items: {{this.length}}</br>Total: ${{this.total}}</h3>
+</script>
+
 <script>
 	var app = app || {};
 	app.photos = new Photos();
 	app.appView = new AppView({collection: app.photos});
 	app.photos.reset(<%= @photos.to_json %>)
-	app.cart = new ShoppingCart();
-	app.cart.basket = new Basket();
+	app.cart = new ShoppingCart([], {total: 0});
+	app.cartView = new ShoppingCartView({collection: app.cart});
 </script>
 
