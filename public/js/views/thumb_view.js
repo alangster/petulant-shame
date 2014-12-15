@@ -20,17 +20,10 @@ ThumbView = Backbone.View.extend({
 	},
 
 	magnify: function() {
-		// var source = $('#big-photo-template').html();
-		// var template = Handlebars.compile(source);
-		// var html = template(this.model.toJSON());
-		// this.$frame.html(html);
-
-		// need to tell the BigPhotoView to render and pass it the model
+		app.appView.toMagnify(this.model);
 	},
 
 	magnifyFirst: function() {
-		if (this.model === app.appView.collection.models[0]) {
-			this.magnify();
-		}
+		if (app.appView.firstPhoto(this.model)) {this.magnify();}
 	}
 });

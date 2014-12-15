@@ -7,6 +7,7 @@ AppView = Backbone.View.extend({
 	},
 	
 	initialize: function() {
+		app.bigPhoto = new BigPhotoView();
 		this.$list = this.$('#photos');
 
 		this.listenTo(this.collection, 'reset', this.add);
@@ -30,5 +31,26 @@ AppView = Backbone.View.extend({
 			.done(function(response) {
 				self.collection.add(JSON.parse(response));
 			});
+	},
+
+	firstPhoto: function(photo) {
+		return photo === this.collection.models[0];
+	},
+
+	toMagnify: function(photo) {
+		app.bigPhoto.render(photo);
+	},
+
+	addItem: function(item) {
+		app.cart.add(item);
+	},
+
+	removeItem: function(item) {
+		app.cart.remove(item);
+	},
+
+	emptyAll: function() {
+		console.log('in appView');
+		app.cart.set([]);
 	}
 });
