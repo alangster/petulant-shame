@@ -77,3 +77,7 @@ ul#photos li div {
 ul#photos li div img {
 	width: 100%;
 }
+
+.fade img {
+	opacity: 0.5;
+}
