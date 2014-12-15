@@ -1,4 +1,9 @@
 
-Photo = Backbone.Model.extend({});
+Photo = Backbone.Model.extend({
+	defaults: {
+		inCart: false,
+		big: false
+	}
+});
 
 

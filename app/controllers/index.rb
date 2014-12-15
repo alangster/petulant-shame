@@ -3,6 +3,6 @@ get '/' do
 	erb :index
 end
 
-get '/photos' do
+get '/photos/:insta_id' do
 	Client.new.pics(params[:insta_id]).to_json
 end

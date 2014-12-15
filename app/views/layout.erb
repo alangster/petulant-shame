@@ -11,11 +11,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+  <script src="/js/handlebars.js"></script>
 
 
   <script src="/js/models/photo.js"></script>
   <script src="/js/collections/photos.js"></script>
+  <script src="/js/collections/shopping_cart.js"></script>
   <script src="/js/views/thumb_view.js"></script>
+  <script src="/js/views/shopping_cart_view.js"></script>
+  <script src="/js/views/big_photo_view.js"></script>
   <script src="/js/views/app_view.js"></script>
 
 
@@ -23,6 +27,12 @@
 </head>
 <body>
   <meta name="viewport" content="initial-scale=1">
+  <script>
+    _.templateSettings = {
+    interpolate: /\{\{\=(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g
+    };
+  </script>
   <%= yield %>
 </body>
 </html>
