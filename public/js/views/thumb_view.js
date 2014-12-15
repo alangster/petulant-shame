@@ -7,6 +7,7 @@ ThumbView = Backbone.View.extend({
 	},
 
 	initialize: function() {
+		this.listenTo(this.model, 'change', this.render);
 		this.$frame = app.appView.$('#photo');
 		this.magnifyFirst();
 	},
@@ -15,6 +16,13 @@ ThumbView = Backbone.View.extend({
 		var source = $('#thumbnail-template').html();
 		var template = Handlebars.compile(source);
 		var html = template(this.model.toJSON());
+
+		if (this.model.get('inCart')) {
+			this.$el.addClass('fade');
+		} else {
+			this.$el.removeClass('fade');
+		};
+    
     this.$el.html(html);
 		return this;
 	},
