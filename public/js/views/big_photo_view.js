@@ -37,7 +37,6 @@ BigPhotoView = Backbone.View.extend({
 	},
 
 	emptyCart: function() {
-		console.log('in BigPhotoView');
 		app.appView.emptyAll();
 	}
 

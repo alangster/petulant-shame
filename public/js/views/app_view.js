@@ -50,7 +50,6 @@ AppView = Backbone.View.extend({
 	},
 
 	emptyAll: function() {
-		console.log('in appView');
 		app.cart.set([]);
 	}
 });
