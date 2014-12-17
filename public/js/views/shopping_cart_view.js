@@ -3,6 +3,10 @@ ShoppingCartView = Backbone.View.extend({
 
 	el: '#cart',
 
+	events: {
+		'click #checkout': 'checkout'
+	},
+
 	initialize: function() {
 		this.listenTo(this.collection, 'add', this.render);
 		this.listenTo(this.collection, 'remove', this.render);
@@ -15,6 +19,10 @@ ShoppingCartView = Backbone.View.extend({
 		var html = template(this.collection);
 		this.$el.html(html);
 		return this;
+	},
+
+	checkout: function() {
+		this.collection.submitOrder();
 	}
 		
 });

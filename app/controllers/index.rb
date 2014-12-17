@@ -6,3 +6,7 @@ end
 get '/photos/:insta_id' do
 	Client.new.pics(params[:insta_id]).to_json
 end
+
+post '/checkout' do
+	p params
+end
