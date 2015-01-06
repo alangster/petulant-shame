@@ -30,14 +30,14 @@ ShoppingCart = Backbone.Collection.extend({
 		this.setCookie();
 	},
 
-	toJSON: function() {
+	orderInfo: function() {
 		return this.models.map(function(item) {
-			item.toJSON();
+			return JSON.stringify(item);
 		});
 	},
 
 	submitOrder: function() {
-		var data = this.models;
+		var data = {"order": this.orderInfo()};
 		$.post('/checkout', data);
 	}
 
