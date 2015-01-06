@@ -1,5 +1,3 @@
-require 'json'
-
 get '/' do
 	@photos = Client.new.pics(params[:insta_id])
 	erb :index
